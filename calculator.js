@@ -6,6 +6,123 @@
  * @return {object} `calculator` object that can be used
  */
 
+var calculatorModule = (function(){
+  
+  var memory;
+  var total;
+  
+  var module = {
+  };
+  
+  module.load = function(x) {
+    
+    if (isNaN(x)) {
+
+      throw new Error('Not a number');
+
+    }
+
+    total = x;
+    return total;
+
+  };
+  
+  module.getTotal = function() {
+    
+    return total;
+
+  };
+  
+  module.sum = function(x) {
+
+    if (isNaN(x)) {
+
+      throw new Error('Not a number');
+
+    }
+
+    total += x;
+
+  };
+
+  module.subtract = function(x){
+    if (isNaN(x)) {
+
+      throw new Error('Not a number');
+
+    }
+
+    total -= x;
+  };
+
+
+  module.multiply = function(x) {
+
+    if (isNaN(x)) {
+
+      throw new Error('Not a number');
+
+    }
+
+
+    total *= x;
+
+   };
+
+
+  module.divide = function(x) {
+
+    if (isNaN(x)) {
+
+      throw new Error('Not a number');
+
+    }
+
+    total /= x;
+
+   };
+
+  module.recallMemory = function() {
+
+      return memory;
+
+   };
+   
+
+  module.saveMemory = function() {
+
+      memory = total;
+
+   };
+   
+   
+  module.clearMemory = function() {
+
+      memory = 0;
+
+   };
+
+   module.undo = function() {
+
+      total = memory;
+
+   };
+
+
+  return module;
+
+});
+
+//var myCalculator = calculatorModule();
+//myCalculator.load(5);
+
+/*
+calculatorModule.load(6);
+calculatorModule.sum(5);
+
+console.log(calculatorModule.getTotal());
+*/
+
 
   /**
    * sets the `total` to the number passed in
@@ -20,10 +137,13 @@
    */
 
 
+
   /**
    * Sums the value passed in with `total`
    * @param { Number } x
    */
+
+
 
 
   /**
@@ -32,10 +152,13 @@
    */
 
 
+
   /**
    * Multiplies the value by `total`
    * @param  { Number } x
    */
+
+
 
 
   /**
@@ -44,10 +167,13 @@
    */
 
 
+
+
   /**
    * Return the value stored at `memory`
    * @return { Number }
    */
+
 
 
   /**
@@ -55,9 +181,13 @@
    */
 
 
+
+
   /**
    * Clear the value stored at `memory`
    */
+
+
 
   /**
    * Validation

@@ -8,15 +8,15 @@
 
 var calculatorModule = (function(){
   
-  var memory;
-  var total;
+  var memory = 0;
+  var total = 0;
   
   var module = {
   };
   
   module.load = function(x) {
     
-    if (isNaN(x)) {
+    if (typeof x !== 'number') {
 
       throw new Error('Not a number');
 
@@ -33,9 +33,9 @@ var calculatorModule = (function(){
 
   };
   
-  module.sum = function(x) {
+  module.add = function(x) {
 
-    if (isNaN(x)) {
+    if (typeof x !== 'number') {
 
       throw new Error('Not a number');
 
@@ -46,7 +46,7 @@ var calculatorModule = (function(){
   };
 
   module.subtract = function(x){
-    if (isNaN(x)) {
+    if (typeof x !== 'number') {
 
       throw new Error('Not a number');
 
@@ -58,7 +58,7 @@ var calculatorModule = (function(){
 
   module.multiply = function(x) {
 
-    if (isNaN(x)) {
+    if (typeof x !== 'number') {
 
       throw new Error('Not a number');
 
@@ -72,7 +72,7 @@ var calculatorModule = (function(){
 
   module.divide = function(x) {
 
-    if (isNaN(x)) {
+    if (typeof x !== 'number') {
 
       throw new Error('Not a number');
 

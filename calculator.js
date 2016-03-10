@@ -7,111 +7,64 @@
  */
 
 var calculatorModule = (function(){
-  
-  var memory = 0;
-  var total = 0;
-  
-  var module = {
-  };
-  
-  module.load = function(x) {
-    
-    if (typeof x !== 'number') {
 
-      throw new Error('Not a number');
-
-    }
-
-    total = x;
-    return total;
-
-  };
-  
-  module.getTotal = function() {
-    
-    return total;
-
-  };
-  
-  module.add = function(x) {
-
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
-
-    total += x;
-
+  var MT = {
+    memory: 0,
+    total: 0
   };
 
-  module.subtract = function(x){
+  var add = require('./files/add.js');
+  var subtract = require('./files/subtract.js');
+  var multiply = require('./files/multiply.js');
+  var divide = require('./files/divide.js');
+
+  function load (x) {
     if (typeof x !== 'number') {
-
       throw new Error('Not a number');
-
     }
+    MT.total = x;
+    return MT.total;
+  }
 
-    total -= x;
+  function getTotal () {
+    return MT.total;
+  }
+
+  function recallMemory() {
+    return MT.memory;
+   }
+
+
+  function saveMemory () {
+      MT.memory = MT.total;
+   }
+
+
+  function clearMemory() {
+      MT.memory = 0;
+   }
+
+   function undo() {
+      MT.total = MT.memory;
+   }
+
+
+  return {
+    load: load,
+    getTotal: getTotal,
+    add: add(MT),
+    subtract: subtract(MT),
+    multiply: multiply(MT),
+    divide: divide(MT),
+    recallMemory: recallMemory,
+    saveMemory: saveMemory,
+    clearMemory: clearMemory,
+    undo: undo,
   };
-
-
-  module.multiply = function(x) {
-
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
-
-
-    total *= x;
-
-   };
-
-
-  module.divide = function(x) {
-
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
-
-    total /= x;
-
-   };
-
-  module.recallMemory = function() {
-
-      return memory;
-
-   };
-   
-
-  module.saveMemory = function() {
-
-      memory = total;
-
-   };
-   
-   
-  module.clearMemory = function() {
-
-      memory = 0;
-
-   };
-
-   module.undo = function() {
-
-      total = memory;
-
-   };
-
-
-  return module;
 
 });
+
+module.exports = calculatorModule;
 
 //var myCalculator = calculatorModule();
 //myCalculator.load(5);

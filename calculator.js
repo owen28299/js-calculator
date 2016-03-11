@@ -66,6 +66,8 @@ var calculatorModule = (function(){
 
 module.exports = calculatorModule;
 
+
+
 //var myCalculator = calculatorModule();
 //myCalculator.load(5);
 

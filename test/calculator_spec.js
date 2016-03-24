@@ -193,6 +193,15 @@ describe('Calculator', function(){
   });
 
   describe('validation checks', function(){
+    it('private variables are not on the global namespace', function () {
+      expect(GLOBAL.total).to.be.undefined;
+      expect(GLOBAL.memory).to.be.undefined;
+    });
+    it('private variables are not exposed by a calculator object', function () {
+      expect(calc.total).to.be.undefined;
+      expect(calc.memory).to.be.undefined;
+    });
+
     var poorinputs = ["string", [1,2,3], false, true, {}, undefined, null];
 
     it('should detect when non-numbers are entered as inputs', function(){

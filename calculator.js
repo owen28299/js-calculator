@@ -6,7 +6,7 @@
  * @return {object} `calculator` object that can be used
  */
 
-var calculatorModule = (function(){
+var Calculator = function(){
 
   var memory = 0;
   var total = 0;
@@ -65,7 +65,7 @@ var calculatorModule = (function(){
 
   var saveMemory = function() {
       memory = total;
-   };
+  };
 
 
   var clearMemory = function() {
@@ -90,7 +90,9 @@ var calculatorModule = (function(){
     undo : undo
   };
 
-});
+};
+
+module.exports = Calculator;
 
 //var myCalculator = calculatorModule();
 //myCalculator.load(5);

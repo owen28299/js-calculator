@@ -7,109 +7,88 @@
  */
 
 var calculatorModule = (function(){
-  
+
   var memory = 0;
   var total = 0;
-  
-  var module = {
-  };
-  
-  module.load = function(x) {
-    
+
+  var validate = function(x) {
     if (typeof x !== 'number') {
-
       throw new Error('Not a number');
-
     }
+  };
+
+  var load = function(x) {
+    validate(x);
 
     total = x;
     return total;
 
   };
-  
-  module.getTotal = function() {
-    
+
+  var getTotal = function() {
     return total;
-
   };
-  
-  module.add = function(x) {
 
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
+  var add = function(x) {
+    validate(x);
 
     total += x;
 
   };
 
-  module.subtract = function(x){
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
+  var subtract = function(x){
+    validate(x);
 
     total -= x;
   };
 
 
-  module.multiply = function(x) {
-
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
-
+  var multiply = function(x) {
+    validate(x);
 
     total *= x;
 
    };
 
 
-  module.divide = function(x) {
-
-    if (typeof x !== 'number') {
-
-      throw new Error('Not a number');
-
-    }
+  var divide = function(x) {
+    validate(x);
 
     total /= x;
 
    };
 
-  module.recallMemory = function() {
-
+  var recallMemory = function() {
       return memory;
-
    };
-   
 
-  module.saveMemory = function() {
 
+  var saveMemory = function() {
       memory = total;
-
    };
-   
-   
-  module.clearMemory = function() {
 
+
+  var clearMemory = function() {
       memory = 0;
-
    };
 
-   module.undo = function() {
-
+   var undo = function() {
       total = memory;
-
    };
 
 
-  return module;
+  return {
+    load : load,
+    getTotal : getTotal,
+    add: add,
+    subtract: subtract,
+    multiply : multiply,
+    divide : divide,
+    recallMemory : recallMemory,
+    saveMemory : saveMemory,
+    clearMemory : clearMemory,
+    undo : undo
+  };
 
 });
 

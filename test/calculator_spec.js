@@ -195,7 +195,7 @@ describe('Calculator', function(){
   describe('validation checks', function(){
     it('private variables are not on the global namespace', function () {
       expect(GLOBAL.total).to.be.undefined;
-      expect(GLOBAL.memory).to.be.undefined;
+      expect(GLOBAL.memory).undefined; //to.be. is actually unnecessary syntactical sugar
     });
     it('private variables are not exposed by a calculator object', function () {
       expect(calc.total).to.be.undefined;
@@ -207,8 +207,11 @@ describe('Calculator', function(){
     it('should detect when non-numbers are entered as inputs', function(){
 
       for (var i in poorinputs){
-        calc.load(poorinputs[i]);
-        expect(calc.load(poorinputs[i])).to.equal('string');
+        expect(calc.load.bind(null, poorinputs[i])).to.throw(Error);
+        expect(calc.add.bind(null, poorinputs[i])).to.throw(Error);
+        expect(calc.subtract.bind(null, poorinputs[i])).to.throw(Error);
+        expect(calc.multiply.bind(null, poorinputs[i])).to.throw(Error);
+        expect(calc.divide.bind(null, poorinputs[i])).to.throw(Error);
       }
 
     });

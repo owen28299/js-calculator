@@ -10,9 +10,6 @@ if (window) {
   var functionsFile = fs.readFileSync(process.cwd() + '/calculator.js');
   vm.runInThisContext(functionsFile); // file runs and it's contents has access to GLOBAL
 }
-/*******************************/
-var expect = chai.expect;
-var should = chai.should();
 
 describe('Calculator', function(){
 
@@ -45,3 +42,4 @@ describe('Calculator', function(){
 
 
 });//ends calculator function
+
